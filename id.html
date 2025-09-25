@@ -357,7 +357,7 @@
     <script src="js/chartist-plugin-tooltip.min.js"></script>
     <script src="js/purify.min.js"></script>
     <script>
-window.pspApiPath = `https://stats.uptimerobot.com/api/getMonitor/btAn4wM8sW?m=${new URLSearchParams(window.location.search).get('m') || '799398769'}`;
+window.pspApiPath = `https://status.uptimerobot.com/api/getMonitor/btAn4wM8sW?m=${new URLSearchParams(window.location.search).get('m') || '799398769'}`;
 var chartLabel = 'Miliseconds';
 
 var timeZone=(d=>`${d<=0?"+":"-"}${String(Math.floor(Math.abs(d)/60)).padStart(2,"0")}:${String(Math.abs(d)%60).padStart(2,"0")}:00`)(new Date().getTimezoneOffset());
