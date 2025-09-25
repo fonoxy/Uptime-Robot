@@ -3,8 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="robots" content="index">
-    <link rel="icon" type="image/x-icon" href="./images/logo.png">
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
     <title>Status Page</title>
     <!-- Styles -->
     <link href="css/app.min.css" rel="stylesheet">
@@ -214,17 +213,19 @@
             <div class="uk-flex uk-flex-between uk-flex-wrap uk-flex-middle">
                 <div class="logo-wrapper">
                     <div>
-                        <a class="no-pointer"  rel="nofollow">
+                        <a class="no-pointer" rel="nofollow">
                             <h1 class="uk-h2 text-logo uk-margin-remove">Status Page</h1>
                         </a>
                     </div>
+                    <a href="./index.html" class="font-14 m-t-5 uk-flex-inline uk-flex-middle gap-5"><svg class="icon icon-arrow-left">
+                            <use href="images/symbol-defs.svg#icon-arrow-left"></use>
+                        </svg>Back to list</a>
                 </div>
                 <div class="psp-header-info uk-flex uk-flex-middle uk-flex-between uk-text-align-end-m">
                     <div>
-                        <h2 class="uk-h4 uk-margin-remove">Service status</h2>
+                        <h2  class="uk-h4 uk-margin-remove">Service status</h2>
                         <div class="uk-flex-inline">
-                            <div class="font-14 last-update">Last updated <span class="last-updated"></span> |
-                                Next update in <span class="counter">59</span> sec.</div>
+                            <div class="font-14 last-update">Last updated <span class="last-updated"></span> | Next update in <span class="counter">60</span> sec.</div>
                         </div>
                     </div>
                 </div>
@@ -232,34 +233,86 @@
         </div>
     </header>
     <div class="uk-container">
-        <div class="card psp-status uk-margin-bottom">
-            <div class="uk-flex uk-flex-between uk-flex-middle uk-flex-wrap">
-                <div class="psp-main-status-wrap uk-flex uk-flex-middle uk-flex-wrap">
-                    <div class="psp-main-status-dot dot is-grey is-big uk-flex-none"></div>
-                    <div class="psp-main-name-wrap uk-text-center uk-text-left@m">
-                        <h2 class="psp-main-status uk-margin-remove"><span class="uk-text-muted">Loading...</span></h2>
+        <div class="card psp-status psp-detail-status uk-margin-bottom uk-flex uk-flex-between uk-flex-middle">
+            <div class="psp-main-status-wrap uk-flex uk-flex-middle uk-flex-wrap">
+                <div class="psp-main-status-dot dot is-grey is-big uk-flex-none"></div>
+                <div class="psp-main-name-wrap uk-text-center uk-text-align-start-m uk-width-expand@m">
+                    <h2 class="psp-main-status uk-margin-remove"><span class="uk-text-muted">Loading...</span></h2>
+                    <div class="psp-monitor-interval uk-text-muted"></div>
+                </div>
+            </div>
+            <div class="psp-latest-downtime uk-text-muted"></div>
+        </div>
+        <div class="uk-flex uk-flex-between uk-flex-wrap uk-flex-middle">
+            <h2 class="uk-h3 uk-margin-small-bottom">Uptime <small class="uk-text-muted">Last <span class="psp-day-number">90</span> days</small></h2>
+        </div>
+        <section class="card psp-uptime-chart psp-monitors uk-margin-bottom">
+            <div class="psp-fake-monitorname"></div>
+            <div class="psp-fake-uptime-bars"></div>
+        </section>
+        <h2 class="uk-h3 uk-margin-small-bottom">Overall Uptime</h2>
+        <div class="card uk-margin-bottom" id="overview">
+            <section id="overall-uptime" class="uk-child-width-expand@s uk-grid-divider" uk-grid>
+                <div>
+                    <h3 class="uk-h4 uk-margin-remove"></h3>
+                    <div class="uk-text-muted">Last 24 hours</div>
+                </div>
+                <div>
+                    <h3 class="uk-h4 uk-margin-remove"></h3>
+                    <div class="uk-text-muted">Last 7 days</div>
+                </div>
+                <div>
+                    <h3 class="uk-h4 uk-margin-remove"></h3>
+                    <div class="uk-text-muted">Last 30 days</div>
+                </div>
+                <div>
+                    <h3 class="uk-h4 uk-margin-remove"></h3>
+                    <div class="uk-text-muted">Last 90 days</div>
+                </div>
+            </section>
+        </div>
+        <div class="rt-section uk-margin-bottom uk-hidden">
+            <h2 class="uk-h3 uk-margin-small-bottom">Response Time
+                <small class="uk-text-muted">Last
+                    <span class="psp-day-number">2</span>
+                    days
+                </small>
+            </h2>
+            <section class="card psp-response-chart">
+                <div id="chart-container" class="uk-position-relative">
+                    <div class="psp-fake-uptime-bars"></div>
+                </div>
+                <svg aria-hidden="true" focusable="false" style="width:0;height:0;position:absolute;">
+                    <defs>
+                        <linearGradient id="gradient-a" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#3bd671" />
+                            <stop offset="100%" stop-color="transparent" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="uk-child-width-expand@s uk-grid-divider uk-margin-small-top" uk-grid>
+                    <div>
+                        <h3 class="uk-h4 uk-margin-remove" id="avg-rt"></h3>
+                        <div class="uk-text-muted">Avg. response time</div>
+                    </div>
+                    <div>
+                        <h3 class="uk-h4 uk-margin-remove" id="h-rt"></h3>
+                        <div class="uk-text-muted">Max. response time</div>
+                    </div>
+                    <div>
+                        <h3 class="uk-h4 uk-margin-remove" id="l-rt"></h3>
+                        <div class="uk-text-muted">Min. response time</div>
                     </div>
                 </div>
-                <div class="psp-latest-downtime uk-text-muted"></div>
-            </div>
-
+            </section>
         </div>
-        <section id="monitors">
-            <div class="uk-flex uk-flex-between uk-flex-wrap uk-flex-middle">
-                <h2 class="uk-h3 uk-margin-small-bottom">Services</h2>
+        <section id="logs">
+            <h2 class="uk-h3 uk-margin-small-bottom">Recent events</h2>
+            <div class="card event-table-wrapper">
             </div>
-            <div class="psp-monitors">
-                <div class="psp-monitor-preloader">
-                    <div class="psp-fake-monitorname"></div>
-                    <div class="psp-fake-uptime-bars"></div>
-                    <div class="psp-fake-monitorname"></div>
-                    <div class="psp-fake-uptime-bars"></div>
-                    <div class="psp-fake-monitorname"></div>
-                    <div class="psp-fake-uptime-bars"></div>
-                </div>
-                <div class="psp-monitor-list"></div>
-            </div>
-            <div class="psp-monitor-pagination uk-margin-small-top" data-page="1">
+            <div class="uk-margin-small-top uk-text-center">
+                <button type="button" class="uk-link" id="load-more-logs-button">Load more events</button>
+                <em class="uk-text-muted uk-hidden" id="load-more-logs-end">That&#039;s all folks!</em>
             </div>
         </section>
     </div>
@@ -278,13 +331,14 @@
                 <svg class="icon icon-bell-off font-18">
                     <use href="images/symbol-defs.svg#icon-bell-off"></use>
                 </svg>
-                <svg class="icon icon-bell font-18 m-r-5 uk-hidden">
+                <svg class="icon icon-bell font-18 uk-hidden">
                     <use href="images/symbol-defs.svg#icon-bell"></use>
                 </svg>
                 Alert sound&nbsp;<span class="label">off</span> <span class="label uk-hidden">on</span>
             </button>
         </div>
-        <div class="uk-text-right@m">
+        <div class="uk-text-right@s">
+
             <span class="uk-margin-small-left">
                 <a class="no-pointer">
                     Status page by
@@ -299,43 +353,37 @@
     <input type="hidden" value="btAn4wM8sW" id="pspi" />
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/uikit.min.js"></script>
-    <script src="js/favico.min.js"></script>
+    <script src="js/chartist.min.js"></script>
+    <script src="js/chartist-plugin-tooltip.min.js"></script>
     <script src="js/purify.min.js"></script>
     <script>
-        window.pspApiPath = 'https://stats.uptimerobot.com/api/getMonitorList/btAn4wM8sW';
-        window.eventsApiPath = 'https://stats.uptimerobot.com/api/getEventFeed/btAn4wM8sW';
+window.pspApiPath = `https://stats.uptimerobot.com/api/getMonitor/btAn4wM8sW?m=${new URLSearchParams(window.location.search).get('m') || '799398769'}`;
+var chartLabel = 'Miliseconds';
 
-        window.showB = true;
-        window.showUP = true;
-        window.showO = false;
-        window.enableD = true;
-        window.hidePM = false;
+var timeZone = '+10:00:00';
+window.timeZone = timeZone.replace('00:00', '00');
 
-        window.compact = true;
-        window.showMonitorsUnderGroups = false;
+function countdown() {
+    var counter = document.getElementsByClassName('counter')[0];
+    var current = parseInt(counter.innerText);
 
-        function countdown() {
-            var counter = document.getElementsByClassName('counter')[0];
-            if (!counter) return;
-
-            var current = parseInt(counter.innerText);
-
-            if (current > 0) {
-                var t = current - 1;
-                if (t.toString().length == 1) {
-                    t = '0' + t.toString();
-                }
-                counter.innerText = t;
-            } else {
-                var p = document.getElementsByClassName('psp-monitor-pagination')[0].getAttribute('data-page');
-                counter.innerText = "59";
-                callMonitorList(p, false);
-                document.getElementsByClassName('last-updated')[0].innerText = new Date().toLocaleTimeString();
-            }
+    if (current > 0) {
+        var t = current - 1;
+        if (t.toString().length == 1) {
+            t = '0' + t.toString();
         }
+        counter.innerText = t;
+    } else {
+        counter.innerText = "59";
+        callMonitorDetail(false);
+        document.getElementsByClassName('last-updated')[0].innerText = new Date().toLocaleTimeString();
+    }
+}
+
+window.compact = true;
     </script>
     <script src="js/common.min.js"></script>
-    <script src="js/home.min.js"></script>
+    <script src="js/detail.min.js"></script>
     <div id="error-modal" uk-modal>
         <div class="uk-modal-dialog uk-modal-body uk-text-center">
             <svg class="icon icon-alert-triangle uk-text-danger" style="font-size: 80px;">
@@ -347,6 +395,7 @@
             </div>
         </div>
     </div>
+    </aside>
     <div class="lcc-backdrop js-lcc-backdrop" style="display: none;"></div>
 </body>
 </html>
